@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  worldskills_learn_project:
+    build: ../project
+    container_name: worldskills_learn_project
+    working_dir: /application
+    tty: true
+    volumes:
+      - ../project:/application
+      - ../project/nginx.conf:/etc/nginx/sites-enabled/default
+      - ./logs/nginx:/var/log/nginx
+    ports:
+      - ${PROJECT_PORT}:80
